@@ -6,3 +6,4 @@ These are my solutions for the [2023 edition of Advent of Code](https://adventof
 
 - Day 1: [Ada](https://learn.adacore.com/index.html)
 - Day 2: [Basic (FreeBasic)](https://www.freebasic.net)
+- Day 3: [Clojure](https://clojure.org)
