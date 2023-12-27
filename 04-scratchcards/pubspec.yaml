@@ -1,0 +1,5 @@
+name: scratchcards
+version: 0.0.1
+
+environment:
+  sdk: ^3.2.4

@@ -1,12 +1,15 @@
-DOCKER=docker run --rm -i -t --platform linux/amd64 -w /tmp
+DOCKER=docker run --rm
 
 01:
-	@$(DOCKER) -v ./01-trebuchet:/source -v ./01-trebuchet/input.txt:/tmp/input.txt advent-of-code-2023 bash -c 'gnatmake -q -F /source/main.adb && ./main'
+	@$(DOCKER) -w /tmp -v ./01-trebuchet:/source -v ./01-trebuchet/input.txt:/tmp/input.txt matth3wology/ada bash -c 'gnatmake -q -F /source/main.adb && ./main'
 
 02:
-	@$(DOCKER) -v ./02-cube-conundrum:/source -v ./02-cube-conundrum/input.txt:/tmp/input.txt advent-of-code-2023 bash -c "/freebasic/bin/fbc -x /tmp/main /source/main.bas && ./main"
+	@$(DOCKER) -w /tmp -v ./02-cube-conundrum:/source -v ./02-cube-conundrum/input.txt:/tmp/input.txt primeimages/freebasic bash -c "fbc -x /tmp/main /source/main.bas && ./main"
 
 03:
-	@$(DOCKER) -v ./03-gear-ratios:/source -v ./03-gear-ratios/input.txt:/tmp/input.txt advent-of-code-2023 bash -c "clojure -M /source/main.clj"
+	@$(DOCKER) -v ./03-gear-ratios:/source -v ./03-gear-ratios/input.txt:/tmp/input.txt clojure bash -c "clojure -M /source/main.clj"
 
-.PHONY: 01 02 03
+04:
+	@$(DOCKER) -w /source -v ./04-scratchcards:/source -v ./04-scratchcards/input.txt:/tmp/input.txt -v ./04-scratchcards/.pub-cache:/root/.pub-cache arm64v8/dart bash -c "dart --disable-analytics run"
+
+.PHONY: 01 02 03 04
