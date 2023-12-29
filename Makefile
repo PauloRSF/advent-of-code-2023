@@ -1,4 +1,4 @@
-DOCKER=docker run --rm
+DOCKER=docker run --rm -it
 
 01:
 	@$(DOCKER) -w /tmp -v ./01-trebuchet:/source -v ./01-trebuchet/input.txt:/tmp/input.txt matth3wology/ada bash -c 'gnatmake -q -F /source/main.adb && ./main'
@@ -12,4 +12,7 @@ DOCKER=docker run --rm
 04:
 	@$(DOCKER) -w /source -v ./04-scratchcards:/source -v ./04-scratchcards/input.txt:/tmp/input.txt -v ./04-scratchcards/.pub-cache:/root/.pub-cache arm64v8/dart bash -c "dart --disable-analytics run"
 
-.PHONY: 01 02 03 04
+05:
+	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer:/source -v ./05-if-you-give-a-seed-a-fertilizer/input.txt:/tmp/input.txt arm64v8/erlang bash -c "erlc main.erl && erl -noshell -s main main -s init stop"
+
+.PHONY: 01 02 03 04 05

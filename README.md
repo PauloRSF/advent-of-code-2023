@@ -24,3 +24,4 @@ $ make 03
 - Day 2: [Basic (FreeBasic)](https://www.freebasic.net)
 - Day 3: [Clojure](https://clojure.org)
 - Day 4: [Dart](https://dart.dev)
+- Day 5: [Erlang](https://www.erlang.org)
