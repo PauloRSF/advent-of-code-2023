@@ -10,9 +10,9 @@ DOCKER=docker run --rm -it
 	@$(DOCKER) -v ./03-gear-ratios:/source -v ./03-gear-ratios/input.txt:/tmp/input.txt clojure bash -c "clojure -M /source/main.clj"
 
 04:
-	@$(DOCKER) -w /source -v ./04-scratchcards:/source -v ./04-scratchcards/input.txt:/tmp/input.txt -v ./04-scratchcards/.pub-cache:/root/.pub-cache arm64v8/dart bash -c "dart --disable-analytics run"
+	@$(DOCKER) -w /source -v ./04-scratchcards:/source -v ./04-scratchcards/input.txt:/tmp/input.txt -v ./04-scratchcards/.pub-cache:/root/.pub-cache dart bash -c "dart --disable-analytics run"
 
 05:
-	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer:/source -v ./05-if-you-give-a-seed-a-fertilizer/input.txt:/tmp/input.txt arm64v8/erlang bash -c "erlc main.erl && erl -noshell -s main main -s init stop"
+	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer:/source -v ./05-if-you-give-a-seed-a-fertilizer/input.txt:/tmp/input.txt erlang bash -c "erlc main.erl && erl -noshell -s main main -s init stop"
 
 .PHONY: 01 02 03 04 05
