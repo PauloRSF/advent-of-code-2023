@@ -3,3 +3,5 @@
 04-scratchcards/.pub-cache
 05-if-you-give-a-seed-a-fertilizer/*.beam
 05-if-you-give-a-seed-a-fertilizer/*.dump
+05-if-you-give-a-seed-a-fertilizer/rebar.lock
+05-if-you-give-a-seed-a-fertilizer/_build

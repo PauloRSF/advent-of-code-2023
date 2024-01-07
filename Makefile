@@ -15,4 +15,7 @@ DOCKER=docker run --rm -it
 05:
 	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer:/source -v ./05-if-you-give-a-seed-a-fertilizer/input.txt:/tmp/input.txt erlang bash -c "erlc main.erl && erl -noshell -s main main -s init stop"
 
+05-format:
+	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer:/source -v ./05-if-you-give-a-seed-a-fertilizer/input.txt:/tmp/input.txt erlang bash -c "rebar3 compile && rebar3 format --files main.erl"
+
 .PHONY: 01 02 03 04 05
