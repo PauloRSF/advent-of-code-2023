@@ -5,3 +5,5 @@
 05-if-you-give-a-seed-a-fertilizer/*.dump
 05-if-you-give-a-seed-a-fertilizer/rebar.lock
 05-if-you-give-a-seed-a-fertilizer/_build
+06-wait-for-it/obj
+06-wait-for-it/bin

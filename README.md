@@ -25,3 +25,4 @@ $ make 03
 - Day 3: [Clojure](https://clojure.org)
 - Day 4: [Dart](https://dart.dev)
 - Day 5: [Erlang](https://www.erlang.org)
+- Day 6: [F#](https://fsharp.org)
