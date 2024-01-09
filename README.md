@@ -26,3 +26,4 @@ $ make 03
 - Day 4: [Dart](https://dart.dev)
 - Day 5: [Erlang](https://www.erlang.org)
 - Day 6: [F#](https://fsharp.org)
+- Day 7: [Go](https://go.dev)
