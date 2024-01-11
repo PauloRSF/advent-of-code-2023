@@ -2,7 +2,9 @@ package main
 
 import "os"
 import "fmt"
+// import "sort"
 import "bufio"
+import "slices"
 import "strings"
 import "strconv"
 
@@ -33,19 +35,19 @@ func mapCardToStrength(card rune) CardStrength {
 	if (card == 'T') {
 		return 10
 	}
-	
+
 	if (card == 'J') {
 		return 11
 	}
-	
+
 	if (card == 'Q') {
 		return 12
 	}
-	
+
 	if (card == 'K') {
 		return 13
 	}
-	
+
 	if (card == 'A') {
 		return 14
 	}
@@ -54,7 +56,45 @@ func mapCardToStrength(card rune) CardStrength {
 }
 
 func getHandType(cards []CardStrength) HandType {
-	return FiveOfAKind
+	cardCountsMap := make(map[CardStrength]int)
+
+	for _, card := range cards {
+		cardCountsMap[card] = cardCountsMap[card] + 1
+	}
+
+	var cardCounts []int
+	
+	for _, count := range cardCountsMap {
+		cardCounts = append(cardCounts, count)
+	}
+
+	slices.Sort(cardCounts)
+
+	if (slices.Equal(cardCounts, []int{5})) {
+		return FiveOfAKind
+	}
+
+	if (slices.Equal(cardCounts, []int{1, 4})) {
+		return FourOfAKind
+	}
+
+	if (slices.Equal(cardCounts, []int{2, 3})) {
+		return FullHouse
+	}
+
+	if (slices.Equal(cardCounts, []int{1, 1, 3})) {
+		return ThreeOfAKind
+	}
+
+	if (slices.Equal(cardCounts, []int{1, 2, 2})) {
+		return TwoPair
+	}
+
+	if (slices.Equal(cardCounts, []int{1, 1, 1, 2})) {
+		return OnePair
+	}
+
+	return HighCard
 }
 
 func parseHand(handString string) Hand {
@@ -89,8 +129,44 @@ func readInput(filePath string) []Hand {
 	return hands
 }
 
+func computeTotalWinnings(hands []Hand) uint {
+	slices.SortFunc(hands, func(a, b Hand) int {
+		if (a.typ > b.typ) {
+			return 1
+		}
+
+		if (a.typ < b.typ) {
+			return -1
+		}
+
+		for i := range a.cardStrengths {
+			if (a.cardStrengths[i] > b.cardStrengths[i]) {
+				return 1
+			}
+
+			if (a.cardStrengths[i] < b.cardStrengths[i]) {
+				return -1
+			}
+		}
+
+		return 0
+	})
+
+	var total uint
+
+	for i, hand := range hands {
+		total += uint(i + 1) * hand.bid
+	}
+
+	fmt.Println(hands)
+
+	return total
+}
+
 func main() {
 	hands := readInput("input.txt");
 
-	fmt.Println(hands)
+	totalWinnings := computeTotalWinnings(hands)
+
+	fmt.Println("Total winnings of hands:", totalWinnings)
 }

@@ -22,6 +22,6 @@ DOCKER=docker run --rm -it
 	@$(DOCKER) -w /source -v ./06-wait-for-it:/source -v ./06-wait-for-it/input.txt:/tmp/input.txt mcr.microsoft.com/dotnet/sdk bash -c "dotnet run"
 
 07:
-	@$(DOCKER) -w /source -v ./07-camel-cards:/source -v ./07-camel-cards/input.txt:/tmp/input.txt golang bash -c "go run main.go"
+	@$(DOCKER) -w /source -v ./07-camel-cards:/source golang bash -c "go run main.go"
 
-.PHONY: 01 02 03 04 05
+.PHONY: 01 02 03 04 05 06 07
