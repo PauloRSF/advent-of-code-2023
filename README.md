@@ -27,3 +27,4 @@ $ make 03
 - Day 5: [Erlang](https://www.erlang.org)
 - Day 6: [F#](https://fsharp.org)
 - Day 7: [Go](https://go.dev)
+- Day 8: [Haskell](https://www.haskell.org)

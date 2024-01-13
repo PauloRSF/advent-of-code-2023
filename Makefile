@@ -27,4 +27,7 @@ DOCKER=docker run --rm -it
 07-format:
 	@$(DOCKER) -w /source -v ./07-camel-cards:/source golang bash -c "go fmt main.go"
 
-.PHONY: 01 02 03 04 05 05-format 06 07 07-format
+08:
+	@$(DOCKER) -w /tmp -v ./08-haunted-wasteland/main.hs:/tmp/main.hs haskell bash -c "ghc main.hs && ./main"
+
+.PHONY: 01 02 03 04 05 05-format 06 07 07-format 08
