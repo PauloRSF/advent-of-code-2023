@@ -19,9 +19,12 @@ DOCKER=docker run --rm -it
 	@$(DOCKER) -w /source -v ./05-if-you-give-a-seed-a-fertilizer/main.erl:/source/main.erl erlang bash -c "rebar3 compile && rebar3 format --files main.erl"
 
 06:
-	@$(DOCKER) -w /source -v ./06-wait-for-it:/source -v ./06-wait-for-it/input.txt:/tmp/input.txt mcr.microsoft.com/dotnet/sdk bash -c "dotnet run"
+	@$(DOCKER) -w /source -v ./06-wait-for-it:/source mcr.microsoft.com/dotnet/sdk bash -c "dotnet run"
 
 07:
 	@$(DOCKER) -w /source -v ./07-camel-cards:/source golang bash -c "go run main.go"
 
-.PHONY: 01 02 03 04 05 06 07
+07-format:
+	@$(DOCKER) -w /source -v ./07-camel-cards:/source golang bash -c "go fmt main.go"
+
+.PHONY: 01 02 03 04 05 05-format 06 07 07-format
